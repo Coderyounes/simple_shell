@@ -1,7 +1,5 @@
 #include "main.h"
 
-extern char **environ;
-
 /**
  * execute_external_command - cmd executer
  *@args: given args

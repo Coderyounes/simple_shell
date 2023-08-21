@@ -7,6 +7,6 @@
 
 [] add func docs
 
-[] refactor extern env var
+[ ✅] refactor extern env var ( fix add **eviron to main.h)
 
-[] exit_builtin
+[ ✅] exit_builtin ( make it conforme to betty)

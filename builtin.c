@@ -1,10 +1,11 @@
 #include "main.h"
 
 /**
- * commandExists - exit
+ * exit_builtin - built-in function to exit
+ *
  * Return: void with exit 0
  */
-void exit_builtin()
+void exit_builtin(void)
 {
 	exit(EXIT_SUCCESS);
 }
