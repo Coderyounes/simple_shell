@@ -25,10 +25,6 @@ void execute_external_command(char *args[], char *env[])
 		int status;
 
 		waitpid(pid, &status, 0);
-		if (WIFEXITED(status))
-		{
-			printf("Command executed\n");
-		}
 	}
 }
 
@@ -58,11 +54,11 @@ int main(void)
 
 		if (argc > 0)
 		{
-			if (strcmp(args[0], "exit") == 0)
+			if (_strcmp(args[0], "exit") == 0)
 			{
 				exit_builtin();
 			}
-			else if (strcmp(args[0], "env") == 0)
+			else if (_strcmp(args[0], "env") == 0)
 			{
 				env_builtin(environ);
 			}

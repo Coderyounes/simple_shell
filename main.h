@@ -11,6 +11,7 @@
 
 extern char **environ;
 
+int _strcmp(const char *s1, const char *s2);
 char *readLine();
 void exit_builtin();
 void env_builtin(char *env[]);
