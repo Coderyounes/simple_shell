@@ -5,7 +5,7 @@
 ## to do'S
 
 
-[] add func docs
+[✅] add func docs
 
 [✅] 01. refactor extern env var ( fix add **eviron to main.h)
 
