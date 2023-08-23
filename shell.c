@@ -56,41 +56,42 @@ int main(int argc, char *argv[])
 {
 	char *command;
 	char prompt[] = "YOUNESSHELL $> ";
-	char input[MAX_COMMAND_LENGTH];
+	char *input;
 	char *args[MAX_COMMAND_LENGTH / 2];
-	int is_piped = !isatty(STDIN_FILENO);
+	size_t input_length;
 
 	argc = 0;
 	while (1)
 	{
-		if (!is_piped)
 		{
 			printf("%s", prompt);
+			fflush(stdout);
 		}
-		if (fgets(input, sizeof(input), stdin) == NULL)
+		input = readLine();
+		if (input == NULL)
 		{
 			printf("\n");
 			break;
 		}
-
-		input[strlen(input) - 1] = '\0';
+		input_length = strlen(input);
+		if (input_length > 0 && input[input_length - 1] == '\n')
+		{
+			input[input_length - 1] = '\0';
+		}
 		command = input;
-
 		tokenizeCommand(command, args, &argc);
-
 		if (argc > 0)
 		{
 			handle_builtins(args[0]);
 			if (commandExists(args[0]))
 			{
 				execute_external_command(args, environ);
-			}
-			else
+			} else
 			{
 				fprintf(stderr, "%s: %s: command not found\n", argv[0], args[0]);
 			}
 		}
+		free(input);
 	}
-
 	return (0);
 }
