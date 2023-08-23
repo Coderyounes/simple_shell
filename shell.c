@@ -48,32 +48,36 @@ void handle_builtins(char *command)
 }
 /**
  * main - mini shell
+ * @argc: number of argument
+ * @argv: argument vector
  * Return: void
  */
-int main(void)
+int main(int argc, char *argv[])
 {
 	char *command;
 	char prompt[] = "YOUNESSHELL $> ";
-	int is_piped = isatty(STDIN_FILENO) == 0;
-	char shell_name[MAX_COMMAND_LENGTH];
+	char input[MAX_COMMAND_LENGTH];
 	char *args[MAX_COMMAND_LENGTH / 2];
-	int argc;
+	int is_piped = !isatty(STDIN_FILENO);
 
-	snprintf(shell_name, sizeof(shell_name), "%s", args[0]);
-
+	argc = 0;
 	while (1)
 	{
 		if (!is_piped)
 		{
-		printf("%s", prompt);
+			printf("%s", prompt);
 		}
-		command = readLine();
-		if (!command)
+		if (fgets(input, sizeof(input), stdin) == NULL)
 		{
 			printf("\n");
 			break;
 		}
+
+		input[strlen(input) - 1] = '\0';
+		command = input;
+
 		tokenizeCommand(command, args, &argc);
+
 		if (argc > 0)
 		{
 			handle_builtins(args[0]);
@@ -83,10 +87,10 @@ int main(void)
 			}
 			else
 			{
-				fprintf(stderr, "%s: %s: command not found\n", shell_name, args[0]);
+				fprintf(stderr, "%s: %s: command not found\n", argv[0], args[0]);
 			}
 		}
-		free(command);
 	}
+
 	return (0);
 }
