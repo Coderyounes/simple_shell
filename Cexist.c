@@ -8,6 +8,7 @@
 int commandExists(char *command)
 {
 	char *path_env;
+	char *path_env_copy;
 	char *path;
 	char executable_path[MAX_COMMAND_LENGTH];
 
@@ -17,7 +18,8 @@ int commandExists(char *command)
 	}
 
 	path_env = getenv("PATH");
-	path = strtok(path_env, ":");
+	path_env_copy = strdup(path_env);
+	path = strtok(path_env_copy, ":");
 
 	while (path != NULL)
 	{
@@ -32,12 +34,12 @@ int commandExists(char *command)
 
 		if (access(executable_path, X_OK) == 0)
 		{
-			free(path_env);
+			free(path_env_copy);
 			return (1);
 		}
 		path = strtok(NULL, ":");
 	}
 
-	free(path_env);
+	free(path_env_copy);
 	return (0);
 }
