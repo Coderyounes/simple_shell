@@ -33,8 +33,6 @@ void execute_external_command(char *args[], char *env[])
  * @command: command to check
  * Return: call to function
  */
-
-
 void handle_builtins(char *command)
 {
 	if (_strcmp(command, "exit") == 0)
@@ -69,9 +67,7 @@ int main(int argc, char *argv[])
 		}
 		input = readLine();
 		if (input == NULL)
-		{
 			break;
-		}
 		input_length = strlen(input);
 		if (input_length > 0 && input[input_length - 1] == '\n')
 		{
@@ -85,7 +81,8 @@ int main(int argc, char *argv[])
 			if (commandExists(args[0]))
 			{
 				execute_external_command(args, environ);
-			} else
+			}
+			else
 			{
 				fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args[0]);
 				free(input);

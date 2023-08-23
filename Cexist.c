@@ -7,7 +7,6 @@
  */
 int commandExists(char *command)
 {
-
 	char *path_env;
 	char *path_env_copy;
 	char *path;
@@ -22,9 +21,13 @@ int commandExists(char *command)
 	path_env_copy = strdup(path_env);
 	path = strtok(path_env_copy, ":");
 
+	if (path_env == NULL || path_env[0] == '\0')
+	{
+		return (0);
+	}
+
 	while (path != NULL)
 	{
-
 		if (strchr(command, '/') != NULL)
 		{
 			snprintf(executable_path, sizeof(executable_path), "%s", command);
@@ -39,7 +42,6 @@ int commandExists(char *command)
 			free(path_env_copy);
 			return (1);
 		}
-
 		path = strtok(NULL, ":");
 	}
 
