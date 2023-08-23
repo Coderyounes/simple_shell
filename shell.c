@@ -55,7 +55,7 @@ void handle_builtins(char *command)
 int main(int argc, char *argv[])
 {
 	char *command;
-	char prompt[] = "";
+	char prompt[] = "x";
 	char *input;
 	char *args[MAX_COMMAND_LENGTH / 2];
 	size_t input_length;
@@ -70,7 +70,6 @@ int main(int argc, char *argv[])
 		input = readLine();
 		if (input == NULL)
 		{
-			printf("\n");
 			break;
 		}
 		input_length = strlen(input);
