@@ -15,7 +15,6 @@ int commandExists(char *command)
 
 	if (access(command, X_OK) == 0)
 	{
-		printf("Full path found: %s\n", command);
 		return (1);
 	}
 
