@@ -36,6 +36,8 @@ int commandExists(char *command)
 		if (access(executable_path, X_OK) == 0)
 		{
 			free(path_env_copy);
+			printf("first 2 returned");
+
 			return (1);
 		}
 		path = strtok(NULL, ":");
