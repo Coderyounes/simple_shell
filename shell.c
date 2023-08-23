@@ -37,11 +37,11 @@ void execute_external_command(char *args[], char *env[])
 
 void handle_builtins(char *command)
 {
-	if (strcmp(command, "exit") == 0)
+	if (_strcmp(command, "exit") == 0)
 	{
 		exit_builtin();
 	}
-	else if (strcmp(command, "env") == 0)
+	else if (_strcmp(command, "env") == 0)
 	{
 		env_builtin(environ);
 	}
@@ -88,6 +88,7 @@ int main(int argc, char *argv[])
 			} else
 			{
 				fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args[0]);
+				exit(127);
 			}
 		}
 		free(input);
