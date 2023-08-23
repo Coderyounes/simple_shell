@@ -21,11 +21,6 @@ int commandExists(char *command)
 	path_env_copy = strdup(path_env);
 	path = strtok(path_env_copy, ":");
 
-	if (path_env == NULL || path_env[0] == '\0')
-	{
-		return (0);
-	}
-
 	while (path != NULL)
 	{
 		if (strchr(command, '/') != NULL)
