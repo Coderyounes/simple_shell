@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 				execute_external_command(args, environ);
 			} else
 			{
-				fprintf(stderr, "%s: %s: command not found\n", argv[0], args[0]);
+				fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args[0]);
 			}
 		}
 		free(input);
