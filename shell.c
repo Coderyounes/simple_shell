@@ -55,7 +55,7 @@ void handle_builtins(char *command)
 int main(int argc, char *argv[])
 {
 	char *command;
-	char prompt[] = "x";
+	char prompt[] = "";
 	char *input;
 	char *args[MAX_COMMAND_LENGTH / 2];
 	size_t input_length;
