@@ -88,6 +88,7 @@ int main(int argc, char *argv[])
 			} else
 			{
 				fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args[0]);
+				free(input);
 				exit(127);
 			}
 		}
