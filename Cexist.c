@@ -14,6 +14,7 @@ int commandExists(char *command)
 
 	if (access(command, X_OK) == 0)
 	{
+		printf("first 1 returned");
 		return (1);
 	}
 
