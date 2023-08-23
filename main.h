@@ -13,7 +13,7 @@ extern char **environ;
 
 int _strcmp(const char *s1, const char *s2);
 char *readLine();
-void exit_builtin();
+void exit_builtin(void);
 void env_builtin(char *env[]);
 void execute_external_command(char *args[], char *env[]);
 void tokenizeCommand(char *command, char *args[], int *argc);
