@@ -53,17 +53,14 @@ void handle_builtins(char *command)
 int main(int argc, char *argv[])
 {
 	char *command;
-	char prompt[] = "";
 	char *input;
 	char *args[MAX_COMMAND_LENGTH / 2];
 	size_t input_length;
 
-	argc = 0;
 	while (1)
 	{
 		{
-			printf("%s", prompt);
-			fflush(stdout);
+			printf("%s\n", "");
 		}
 		input = readLine();
 		if (input == NULL)
@@ -78,16 +75,15 @@ int main(int argc, char *argv[])
 		if (argc > 0)
 		{
 			handle_builtins(args[0]);
-
-			perror("before the condition");
+			printf("before the condition");
 			if (commandExists(args[0]))
 			{
-				perror("cmd exists 200ok");
+				printf("cmd exists 200ok");
 				execute_external_command(args, environ);
 			}
 			else
 			{
-				perror("cmd doesn't exits");
+				printf("cmd doesn't exits");
 				fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args[0]);
 				free(input);
 				exit(127);
