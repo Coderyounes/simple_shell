@@ -7,7 +7,7 @@
  */
 void exit_builtin(void)
 {
-	exit(2);
+	exit(EXIT_SUCCESS);
 }
 
 /**
