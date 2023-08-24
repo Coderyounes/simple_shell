@@ -17,12 +17,9 @@ int commandExists(char *command)
 		return (1);
 	}
 
-	printf("init execute cmd 2222");
-
 	path_env = getenv("PATH");
 	path_env_copy = strdup(path_env);
 	path = strtok(path_env_copy, ":");
-	printf("%s  2\n", path_env);
 
 	while (path != NULL)
 	{

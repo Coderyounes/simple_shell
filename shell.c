@@ -31,6 +31,7 @@ void execute_external_command(char *args[], char *env[])
 /**
  * handle_builtins - function to handle built-in case
  * @command: command to check
+ * @input: input
  * Return: call to function
  */
 void handle_builtins(char *command, char *input)
@@ -51,7 +52,6 @@ void handle_builtins(char *command, char *input)
  * @argv: argument vector
  * Return: void
  */
-
 int main(int argc, char *argv[])
 {
 	char *command;
@@ -59,7 +59,6 @@ int main(int argc, char *argv[])
 	char *input;
 	size_t input_length;
 
-	printf("before while\n");
 	while (1)
 	{
 		printf("%s\n", "");
@@ -73,14 +72,11 @@ int main(int argc, char *argv[])
 		}
 		command = input;
 		tokenizeCommand(command, args, &argc);
-		printf("before argc");
 		if (argc > 0)
 		{
 			handle_builtins(args[0], input);
-			printf("before the condition");
 			if (commandExists(args[0]))
 			{
-				printf("cmd exists 200ok");
 				execute_external_command(args, environ);
 			}
 			else
