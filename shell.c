@@ -33,10 +33,11 @@ void execute_external_command(char *args[], char *env[])
  * @command: command to check
  * Return: call to function
  */
-void handle_builtins(char *command)
+void handle_builtins(char *command, char *input)
 {
 	if (_strcmp(command, "exit") == 0)
 	{
+		free(input);
 		exit_builtin();
 	}
 	else if (_strcmp(command, "env") == 0)
@@ -51,11 +52,11 @@ void handle_builtins(char *command)
  * Return: void
  */
 
-
 int main(int argc, char *argv[])
 {
 	char *command;
 	char *args[MAX_COMMAND_LENGTH / 2];
+	char *input;
 	size_t input_length;
 
 	printf("before while\n");
@@ -75,7 +76,7 @@ int main(int argc, char *argv[])
 		printf("before argc");
 		if (argc > 0)
 		{
-			handle_builtins(args[0]);
+			handle_builtins(args[0], input);
 			printf("before the condition");
 			if (commandExists(args[0]))
 			{
