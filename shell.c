@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
 
 	while (1)
 	{
-		printf("%s\n", "");
+		printf("%s", "");
 		input = readLine();
 		if (input == NULL)
 			break;
