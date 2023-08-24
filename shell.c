@@ -31,14 +31,16 @@ void execute_external_command(char *args[], char *env[])
 /**
  * handle_builtins - function to handle built-in case
  * @command: command to check
+ * @input: input
  * Return: call to function
  */
 
 
-void handle_builtins(char *command)
+void handle_builtins(char *command, char *input)
 {
 	if (_strcmp(command, "exit") == 0)
 	{
+		free(input);
 		exit_builtin();
 	}
 	else if (_strcmp(command, "env") == 0)
@@ -80,7 +82,7 @@ int main(int argc, char *argv[])
 		tokenizeCommand(command, args, &argc);
 		if (argc > 0)
 		{
-			handle_builtins(args[0]);
+			handle_builtins(args[0], input);
 			if (commandExists(args[0]))
 			{
 				execute_external_command(args, environ);
