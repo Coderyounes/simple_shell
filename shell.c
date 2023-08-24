@@ -31,12 +31,12 @@ void execute_external_command(char *args[], char *env[])
 /**
  * handle_builtins - function to handle built-in case
  * @command: command to check
- * @input: input
  * Return: call to function
  */
-int handle_builtins(char *command, char *input)
+
+
+void handle_builtins(char *command)
 {
-	free(input);
 	if (_strcmp(command, "exit") == 0)
 	{
 		exit_builtin();
@@ -44,10 +44,7 @@ int handle_builtins(char *command, char *input)
 	else if (_strcmp(command, "env") == 0)
 	{
 		env_builtin(environ);
-		return (1);
 	}
-
-	return (0);
 }
 /**
  * main - mini shell
@@ -58,16 +55,22 @@ int handle_builtins(char *command, char *input)
 int main(int argc, char *argv[])
 {
 	char *command;
-	char *args[MAX_COMMAND_LENGTH / 2];
+	char prompt[] = "";
 	char *input;
+	char *args[MAX_COMMAND_LENGTH / 2];
 	size_t input_length;
 
+	argc = 0;
 	while (1)
 	{
-		printf("%s", "");
+		{
+			printf("%s", prompt);
+			fflush(stdout);
+		}
 		input = readLine();
 		if (input == NULL)
 			break;
+
 		input_length = strlen(input);
 		if (input_length > 0 && input[input_length - 1] == '\n')
 		{
@@ -77,13 +80,11 @@ int main(int argc, char *argv[])
 		tokenizeCommand(command, args, &argc);
 		if (argc > 0)
 		{
-			if (handle_builtins(args[0], input))
-				continue;
+			handle_builtins(args[0]);
 			if (commandExists(args[0]))
 			{
 				execute_external_command(args, environ);
-			}
-			else
+			} else
 			{
 				fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args[0]);
 				free(input);

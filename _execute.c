@@ -22,7 +22,6 @@ void executeCommand(char *args[], char *env[])
 	}
 
 	path_env = getenv("PATH");
-
 	path = strtok(path_env, ":");
 	while (path != NULL)
 	{

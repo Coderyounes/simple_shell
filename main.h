@@ -7,13 +7,13 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-#define MAX_COMMAND_LENGTH 1024
+#define MAX_COMMAND_LENGTH 100
 
 extern char **environ;
 
 int _strcmp(const char *s1, const char *s2);
 int is_piped(void);
-int handle_builtins(char *command, char *input);
+void handle_builtins(char *command);
 char *readLine();
 void exit_builtin(void);
 void env_builtin(char *env[]);
