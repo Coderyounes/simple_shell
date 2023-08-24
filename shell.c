@@ -34,15 +34,14 @@ void execute_external_command(char *args[], char *env[])
  * @input: input
  * Return: call to function
  */
-void handle_builtins(char *commands, char *input)
+void handle_builtins(char *command, char *input)
 {
-	if (_strcmp(commands[0], "exit") == 0)
+	if (_strcmp(command, "exit") == 0)
 	{
-		printf(commands[1]);
 		free(input);
 		exit_builtin();
 	}
-	else if (_strcmp(commands[0], "env") == 0)
+	else if (_strcmp(command, "env") == 0)
 	{
 		env_builtin(environ);
 	}
@@ -75,7 +74,7 @@ int main(int argc, char *argv[])
 		tokenizeCommand(command, args, &argc);
 		if (argc > 0)
 		{
-			handle_builtins(args, input);
+			handle_builtins(args[0], input);
 			if (commandExists(args[0]))
 			{
 				execute_external_command(args, environ);

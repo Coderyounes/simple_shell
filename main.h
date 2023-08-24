@@ -13,7 +13,7 @@ extern char **environ;
 
 int _strcmp(const char *s1, const char *s2);
 int is_piped(void);
-void handle_builtins(char **command, char *input);
+void handle_builtins(char *command, char *input);
 char *readLine();
 void exit_builtin(void);
 void env_builtin(char *env[]);
