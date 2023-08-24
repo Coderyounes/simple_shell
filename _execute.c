@@ -8,6 +8,7 @@
  */
 void executeCommand(char *args[], char *env[])
 {
+	printf("init execute cmd");
 	char *path_env;
 	char *path;
 	char executable_path[MAX_COMMAND_LENGTH];
@@ -22,6 +23,8 @@ void executeCommand(char *args[], char *env[])
 	}
 
 	path_env = getenv("PATH");
+
+	printf("______________________________________ %s", path_env);
 	path = strtok(path_env, ":");
 	while (path != NULL)
 	{

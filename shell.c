@@ -78,12 +78,16 @@ int main(int argc, char *argv[])
 		if (argc > 0)
 		{
 			handle_builtins(args[0]);
+
+			printf("before the condition");
 			if (commandExists(args[0]))
 			{
+				printf("cmd exists 200ok");
 				execute_external_command(args, environ);
 			}
 			else
 			{
+				printf("cmd doesn't exits");
 				fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args[0]);
 				free(input);
 				exit(127);
