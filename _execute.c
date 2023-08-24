@@ -8,11 +8,11 @@
  */
 void executeCommand(char *args[], char *env[])
 {
-	perror("init execute cmd");
 	char *path_env;
 	char *path;
 	char executable_path[MAX_COMMAND_LENGTH];
 
+	perror("init execute cmd");
 	if (access(args[0], X_OK) == 0)
 	{
 		if (execve(args[0], args, env) == -1)
