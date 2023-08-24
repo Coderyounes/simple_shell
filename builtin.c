@@ -7,6 +7,7 @@
  */
 void exit_builtin(void)
 {
+	free(input);
 	exit(EXIT_SUCCESS);
 }
 

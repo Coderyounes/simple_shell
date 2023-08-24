@@ -10,6 +10,7 @@
 #define MAX_COMMAND_LENGTH 1024
 
 extern char **environ;
+extern char *input;
 
 int _strcmp(const char *s1, const char *s2);
 int is_piped(void);

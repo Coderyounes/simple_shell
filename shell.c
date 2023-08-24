@@ -50,10 +50,11 @@ void handle_builtins(char *command)
  * @argv: argument vector
  * Return: void
  */
+
+
 int main(int argc, char *argv[])
 {
 	char *command;
-	char *input;
 	char *args[MAX_COMMAND_LENGTH / 2];
 	size_t input_length;
 
