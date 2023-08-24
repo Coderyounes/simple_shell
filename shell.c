@@ -57,11 +57,10 @@ int main(int argc, char *argv[])
 	char *args[MAX_COMMAND_LENGTH / 2];
 	size_t input_length;
 
+	printf("before while\n");
 	while (1)
 	{
-		{
-			printf("%s\n", "");
-		}
+		printf("%s\n", "");
 		input = readLine();
 		if (input == NULL)
 			break;
@@ -72,6 +71,7 @@ int main(int argc, char *argv[])
 		}
 		command = input;
 		tokenizeCommand(command, args, &argc);
+		printf("before argc");
 		if (argc > 0)
 		{
 			handle_builtins(args[0]);
@@ -83,7 +83,6 @@ int main(int argc, char *argv[])
 			}
 			else
 			{
-				printf("cmd doesn't exits");
 				fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args[0]);
 				free(input);
 				exit(127);
